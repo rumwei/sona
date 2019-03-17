@@ -13,6 +13,36 @@
     <url>https://github.com/rumwei/sona</url>
     <description>common method in java</description>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    </properties>
+
+    <dependencies>
+        <!--引入@Slf4j注解来写日志 begin-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.26</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.6.6</version>
+        </dependency>
+        <!--引入@Slf4j注解来写日志 end-->
+
+
+    </dependencies>
+
+
+
+
     <licenses>
         <license>
             <name>Apache 2</name>
@@ -46,9 +76,7 @@
         </repository>
     </distributionManagement>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+
 
 
     <build>
@@ -107,10 +135,10 @@
                         <goals>
                             <goal>sign</goal>
                         </goals>
-                        <configuration>
+                        <!--<configuration>
                             <gpg.keyname>56C0E97ECDA40045</gpg.keyname>
                             <gpg.passphrase>2011guweibi</gpg.passphrase>
-                        </configuration>
+                        </configuration>-->
                     </execution>
                 </executions>
             </plugin>

@@ -3,13 +3,14 @@ package com.rumwei.util;
 
 import com.rumwei.enums.DateType;
 import com.rumwei.enums.DeleteType;
+import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-
+@Slf4j
 public class StringUtilGW {
 
     /*
@@ -19,6 +20,8 @@ public class StringUtilGW {
     public static Integer StringToInteger(String input){
         if (input != null){
             return Integer.parseInt(input);
+        }else {
+            log.error("input is null");
         }
         return null;
     }
@@ -30,6 +33,8 @@ public class StringUtilGW {
     public static BigDecimal StringToBigDecimal(String input){
         if (input != null){
             return new BigDecimal(input);
+        }else {
+            log.error("input is null");
         }
         return null;
     }
