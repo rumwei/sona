@@ -6,7 +6,7 @@
 
     <groupId>com.github.rumwei</groupId>
     <artifactId>anita</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <packaging>jar</packaging>
 
     <name>rumwei</name>
@@ -15,6 +15,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <google-guava-version>27.1-jre</google-guava-version>
+        <jackson-version>2.9.7</jackson-version>
 
     </properties>
 
@@ -36,6 +38,21 @@
             <version>1.6.6</version>
         </dependency>
         <!--引入@Slf4j注解来写日志 end-->
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${google-guava-version}</version>
+        </dependency>
+
+        <!--json字符串与Object的处理 begin-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-version}</version>
+        </dependency>
+        <!--json字符串与Object的处理 end-->
+
 
 
     </dependencies>
@@ -87,8 +104,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <!-- Source -->
