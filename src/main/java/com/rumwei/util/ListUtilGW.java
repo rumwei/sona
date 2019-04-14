@@ -1,17 +1,22 @@
 package com.rumwei.util;
 
 import com.google.common.collect.Lists;
+import com.rumwei.base.ComparatorGW;
 import com.rumwei.base.ConditionGW;
+import com.rumwei.common.DataTypeCommonGW;
+import com.rumwei.enums.OrderType;
+import com.rumwei.exception.runtime.BizException;
+import com.sun.istack.internal.NotNull;
+import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.lang.reflect.Array;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /*
 * List相关的处理类，针对所有List以及入参为List的所有情况
 * */
+@Slf4j
 public class ListUtilGW {
 
 
@@ -115,6 +120,84 @@ public class ListUtilGW {
             }
         }
         return result.toString();
+    }
+
+    public static boolean isNull(List input){
+        return input == null;
+    }
+
+    public static boolean isNullOrEmpty(List input){
+        return (input == null || input.size() == 0);
+    }
+
+    /*
+    * convert list to array
+    * */
+    public static <T> T[] listToArray(List<T> list, Class clazz){
+        Object obArray = Array.newInstance(clazz,list.size());
+        T[] result = (T[])obArray;
+        for (int i=0; i<list.size(); i++){
+            result[i] = list.get(i);
+        }
+        return result;
+    }
+
+    /*
+    * convert List to Set
+    * */
+    public static Set listToSet(List list){
+        return new HashSet(list);
+    }
+
+    /*
+    * List元素去重
+    * 针对去重元素为复杂对象的说明：
+    * 如下方法中已经实现的是时间复杂度比较高（10000对象大概2000ms左右的去重时间），但是结果准确的方式
+    * 若去重的集合size巨大，且对性能要求很高，则推荐复写相应对象的hashCode和equal方法，然后借助Set集合来做去重操作，基本可以达到上述性能的40倍
+    * */
+    public static <T> List<T> duplicateRemove(List<T> list, ComparatorGW<T> comparator, @NotNull OrderType orderType){
+        if (list.size() > 10000){
+            log.warn("去重集合数目已超过10000，若为非基本类型对象去重，请慎重使用该方法，10000数据量去重时间在2000ms作用");
+        }
+        List<T> result = newArrayList();
+        if (!isNullOrEmpty(list)){
+            if (DataTypeCommonGW.isBasicTypeOrString(list.get(0))){
+                //ele is Basic Data Type or String Type
+                Set<T> set = null;
+                if (orderType == OrderType.OrderSense) {
+                    set = new LinkedHashSet<>();
+                    set.addAll(list);
+                }else if (orderType == OrderType.OrderNonSense){
+                    set = new HashSet<>();
+                    set.addAll(list);
+                }else {
+                    log.error("please input correct OrderType; Only OrderType.OrderSense and OrderType.OrderNonSense is valid.");
+                    throw new BizException("please input correct OrderType; Only OrderType.OrderSense and OrderType.OrderNonSense is valid.");
+                }
+                result.addAll(set);
+            }else {
+                //ele is Object
+                if (orderType == OrderType.OrderSense) {
+                    for (int i = 0; i < list.size(); i++) {
+                        boolean mark = false;
+                        for (T t : result) {
+                            if (comparator.compare(t, list.get(i)) == 0) {
+                                mark = true;
+                                break;
+                            }
+                        }
+                        if (!mark) {  //no same ele exist yet
+                            result.add(list.get(i));
+                        }
+
+                    }
+                }else {
+                    log.error("please input correct OrderType; With Object Only OrderType.OrderSense is valid.");
+                    throw new BizException("please input correct OrderType; Only OrderType.OrderSense is valid.");
+                }
+            }
+        }
+        return result;
     }
 
 }
