@@ -2,7 +2,9 @@ package com.rumwei.util;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.exc.InvalidDefinitionException;
 import com.google.common.base.Preconditions;
+import com.rumwei.exception.runtime.BizException;
 import lombok.extern.slf4j.Slf4j;
 
 /*
@@ -27,8 +29,16 @@ public class JsonUtilGW {
     * @Date 2019-03-23
     */
     public static <T> T JsonStringToObject(String jsonStr, Class<T> Class) throws Exception{
-        Preconditions.checkNotNull(jsonStr);
-        return objectMapper.readValue(jsonStr,Class);
+        try{
+            Preconditions.checkNotNull(jsonStr);
+            return objectMapper.readValue(jsonStr,Class);
+        }catch(InvalidDefinitionException e){
+            log.error("Please add default constructor for Class respective to the Object to be converted");
+            throw new BizException("Please add default constructor for Class respective to the Object to be converted");
+        }catch (Exception e){
+            throw e;
+        }
+
     }
 
 

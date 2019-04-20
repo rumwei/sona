@@ -39,6 +39,14 @@ public class StringUtilGW {
         return null;
     }
 
+    public static boolean isNullOrEmpty(String input){
+        return input == null || input.length() == 0;
+    }
+
+    public static boolean isNotNullOrEmpty(String input){
+        return !isNullOrEmpty(input);
+    }
+
 
 
 
