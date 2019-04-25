@@ -2,7 +2,7 @@ package com.rumwei.outside;
 
 /* 辅助判定文本编码格式 */
 
-class Encoding {
+public class Encoding {
     // Supported Encoding Types
     public static int GB2312 = 0;
 

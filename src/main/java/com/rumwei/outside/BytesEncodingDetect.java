@@ -7,7 +7,7 @@ import java.net.URL;
 
 /* 辅助判定文本编码格式 */
 
-class BytesEncodingDetect extends Encoding {
+public class BytesEncodingDetect extends Encoding {
     // Frequency tables to hold the GB, Big5, and EUC-TW character
     // frequencies
     int GBFreq[][];
