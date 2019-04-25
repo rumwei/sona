@@ -14,7 +14,8 @@ import java.util.stream.Collectors;
 public class FuncTest {
 
     public static void main(String[] args){
-
+        int coreNum = Runtime.getRuntime().availableProcessors();
+        System.out.println(coreNum);
     }
 
 
