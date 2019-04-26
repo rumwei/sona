@@ -54,12 +54,40 @@ public class FileUtilGW {
 
 
 
+/*
+     * @Description 用于文件编码格式未知的情况，自动获取文件编码格式，若获取失败，默认按照utf-8来处理
+     * */
+    public static void overWriteStrToFile(String path, String fileName, String content) throws Exception{
+        String encoding = EncodingDetectGW.getJavaEncode(path+pathSeparator+fileName);
+        if (encoding != null){
+            overWriteStrToFile(path,fileName,content,encoding);
+        }else {
+            overWriteStrToFile(path,fileName,content,CharsetEnum.utf8);
+        }
+    }
+
+    /*
+     * @Description 用于文件编码格式已知的情况，直接传入文件编码
+     * */
+    public static void overWriteStrToFile(String path, String fileName, String content, CharsetEnum charset) throws Exception{
+        overWriteStrToFile(path,fileName,content,charset.getStrVal());
+    }
 
 
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    private static void overWriteStrToFile(String path, String fileName, String content, String charset) throws Exception{
+        File file = new File(path+pathSeparator+fileName);
+        FileUtils.writeStringToFile(file,content,charset,false);
+    }
 
     private static void appendStrToFile(String path, String fileName, String content, String charset) throws Exception{
         File file = new File(path+pathSeparator+fileName);
