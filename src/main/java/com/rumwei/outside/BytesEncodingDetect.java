@@ -900,6 +900,7 @@ public class BytesEncodingDetect extends Encoding {
                 JPFreq[i][j] = 0;
             }
         }
+        //region 1
         GBFreq[20][35] = 599;
         GBFreq[49][26] = 598;
         GBFreq[41][38] = 597;
@@ -1300,6 +1301,7 @@ public class BytesEncodingDetect extends Encoding {
         GBFreq[20][24] = 202;
         GBFreq[45][19] = 201;
         GBFreq[18][53] = 200;
+        //endregion
         /*
          * GBFreq[39][0] = 199; GBFreq[40][71] = 198; GBFreq[41][27] = 197; GBFreq[15][69] = 196; GBFreq[42][10] = 195;
          * GBFreq[31][89] = 194; GBFreq[51][28] = 193; GBFreq[41][22] = 192; GBFreq[40][43] = 191; GBFreq[38][6] = 190;
@@ -1341,6 +1343,7 @@ public class BytesEncodingDetect extends Encoding {
          * GBFreq[47][71] = 5; GBFreq[29][37] = 4; GBFreq[25][50] = 3; GBFreq[18][84] = 2; GBFreq[50][45] = 1; GBFreq[48][46] = 0;
          */
         // GBFreq[43][89] = -1; GBFreq[54][68] = -2;
+        //region 2
         Big5Freq[9][89] = 600;
         Big5Freq[11][15] = 599;
         Big5Freq[3][66] = 598;
@@ -1741,6 +1744,7 @@ public class BytesEncodingDetect extends Encoding {
         Big5Freq[26][124] = 203;
         Big5Freq[4][19] = 202;
         Big5Freq[9][152] = 201;
+        //endregion
         /*
          * Big5Freq[5][0] = 200; Big5Freq[26][57] = 199; Big5Freq[13][155] = 198; Big5Freq[3][38] = 197; Big5Freq[9][155] = 196;
          * Big5Freq[28][53] = 195; Big5Freq[15][71] = 194; Big5Freq[21][95] = 193; Big5Freq[15][112] = 192; Big5Freq[14][138] = 191;
@@ -1784,6 +1788,7 @@ public class BytesEncodingDetect extends Encoding {
          * Big5Freq[24][3] = 5; Big5Freq[13][70] = 4; Big5Freq[6][21] = 3; Big5Freq[21][86] = 2; Big5Freq[12][23] = 1;
          * Big5Freq[3][85] = 0; EUC_TWFreq[45][90] = 600;
          */
+        //region 3
         Big5PFreq[41][122] = 600;
         Big5PFreq[35][0] = 599;
         Big5PFreq[43][15] = 598;
@@ -2784,6 +2789,7 @@ public class BytesEncodingDetect extends Encoding {
         EUC_TWFreq[74][69] = 203;
         EUC_TWFreq[36][82] = 202;
         EUC_TWFreq[46][59] = 201;
+        //endregion
         /*
          * EUC_TWFreq[38][32] = 200; EUC_TWFreq[74][2] = 199; EUC_TWFreq[53][31] = 198; EUC_TWFreq[35][38] = 197; EUC_TWFreq[46][62] =
          * 196; EUC_TWFreq[77][31] = 195; EUC_TWFreq[55][74] = 194; EUC_TWFreq[66][6] = 193; EUC_TWFreq[56][21] = 192;
@@ -2832,6 +2838,7 @@ public class BytesEncodingDetect extends Encoding {
          * 5; EUC_TWFreq[52][40] = 4; EUC_TWFreq[40][22] = 3; EUC_TWFreq[65][91] = 2; EUC_TWFreq[50][25] = 1; EUC_TWFreq[35][84] =
          * 0;
          */
+        //region 4
         GBKFreq[52][132] = 600;
         GBKFreq[73][135] = 599;
         GBKFreq[49][123] = 598;
@@ -3134,6 +3141,7 @@ public class BytesEncodingDetect extends Encoding {
         GBKFreq[58][174] = 301;
         GBKFreq[80][144] = 300;
         GBKFreq[85][113] = 299;
+        //endregion
         /*
          * GBKFreq[83][15] = 298; GBKFreq[105][80] = 297; GBKFreq[7][179] = 296; GBKFreq[93][4] = 295; GBKFreq[123][40] = 294;
          * GBKFreq[85][120] = 293; GBKFreq[77][165] = 292; GBKFreq[86][67] = 291; GBKFreq[25][162] = 290; GBKFreq[77][183] = 289;
@@ -3186,3 +3194,7 @@ public class BytesEncodingDetect extends Encoding {
          * GBKFreq[64][144] = 58; GBKFreq[1][187] = 57; GBKFreq[82][128] = 56; GBKFreq[3][66] = 55; GBKFreq[68][133] = 54;
          * GBKFreq[55][167] = 53; GBKFreq[52][130] = 52; GBKFreq[61][133] = 51; GBKFreq[72][181] = 50; GBKFreq[25][98] = 49;
          * GBKFreq[84][149] = 48; GBKFreq[91][91] = 47; GBKFreq[47][188] = 46; GBKFreq[68][130] = 45; GBKFreq[22][44] = 4
+         * */
+
+    }
+}

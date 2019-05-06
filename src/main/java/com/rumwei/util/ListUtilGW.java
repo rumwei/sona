@@ -3,6 +3,7 @@ package com.rumwei.util;
 import com.google.common.collect.Lists;
 import com.rumwei.base.ComparatorGW;
 import com.rumwei.base.ConditionGW;
+import com.rumwei.base.ConvertGW;
 import com.rumwei.common.DataTypeCommonGW;
 import com.rumwei.enums.OrderType;
 import com.rumwei.exception.runtime.BizException;
@@ -18,6 +19,26 @@ import java.util.stream.Collectors;
 * */
 @Slf4j
 public class ListUtilGW {
+
+    /*
+    * @Input: List<E>， String separator
+    * @Return: String
+    * @Description： 将入参List<E>中的每个元素转换成一个字符串，然后利用输入的separator分隔符串成一个字符串
+    * @eg： List: 2 3 4; separator: &  输出 2&3&4
+    * */
+    public static <E> String ListEleToString(List<E> input, String separator, ConvertGW<E,String> convert){
+        StringBuffer result = new StringBuffer();
+        if (!isNullOrEmpty(input)){
+            for (int i=0; i<input.size(); i++){
+                if (i < input.size()-1){
+                    result.append(convert.apply(input.get(i))).append(separator);
+                }else {
+                    result.append(convert.apply(input.get(i)));
+                }
+            }
+        }
+        return result.toString();
+    }
 
 
     /*
