@@ -1,3 +1,4 @@
+/*
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,3 +13,4 @@ public class People {
         this.age = age;
     }
 }
+*/

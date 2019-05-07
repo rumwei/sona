@@ -1,3 +1,4 @@
+/*
 import com.google.common.collect.Lists;
 import com.rumwei.base.ComparatorGW;
 import com.rumwei.base.ConditionGW;
@@ -32,3 +33,4 @@ public class FuncTest {
 
 
 }
+*/
