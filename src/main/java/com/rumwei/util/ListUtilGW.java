@@ -7,7 +7,7 @@ import com.rumwei.base.ConvertGW;
 import com.rumwei.common.DataTypeCommonGW;
 import com.rumwei.enums.OrderType;
 import com.rumwei.exception.runtime.BizException;
-import com.sun.istack.internal.NotNull;
+import javax.annotation.Nonnull;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Array;
@@ -176,7 +176,7 @@ public class ListUtilGW {
     * 如下方法中已经实现的是时间复杂度比较高（10000对象大概2000ms左右的去重时间），但是结果准确的方式
     * 若去重的集合size巨大，且对性能要求很高，则推荐复写相应对象的hashCode和equal方法，然后借助Set集合来做去重操作，基本可以达到上述性能的40倍
     * */
-    public static <T> List<T> duplicateRemove(List<T> list, ComparatorGW<T> comparator, @NotNull OrderType orderType){
+    public static <T> List<T> duplicateRemove(List<T> list, ComparatorGW<T> comparator, @Nonnull OrderType orderType){
         if (list.size() > 10000){
             log.warn("去重集合数目已超过10000，若为非基本类型对象去重，请慎重使用该方法，10000数据量去重时间在2000ms作用");
         }

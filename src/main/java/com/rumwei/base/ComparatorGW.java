@@ -1,10 +1,11 @@
 package com.rumwei.base;
 
 import com.google.common.annotations.GwtCompatible;
-import com.sun.istack.internal.NotNull;
+
+import javax.annotation.Nonnull;
 
 @FunctionalInterface
 @GwtCompatible
 public interface ComparatorGW<T> {
-    int compare(@NotNull T t1, @NotNull T t2);
+    int compare(@Nonnull T t1, @Nonnull T t2);
 }

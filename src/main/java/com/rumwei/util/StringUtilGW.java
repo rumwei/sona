@@ -3,6 +3,7 @@ package com.rumwei.util;
 
 import com.rumwei.enums.DateType;
 import com.rumwei.enums.DeleteType;
+import com.rumwei.exception.runtime.BizException;
 import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;

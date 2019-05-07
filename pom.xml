@@ -17,6 +17,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <google-guava-version>27.1-jre</google-guava-version>
         <jackson-version>2.9.8</jackson-version>
+        <junit-version>5.5.0-M1</junit-version>
 
     </properties>
 
@@ -64,9 +65,11 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.5.0-M1</version>
+            <version>${junit-version}</version>
             <scope>test</scope>
         </dependency>
+
+        
 
 
 
