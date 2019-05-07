@@ -58,7 +58,7 @@ public class StringUtilGW {
     * */
     public static String trimStartOrEnd(String input, DeleteType deleteType, Character... characters) throws Exception{
         String result = "";
-        if (characters == null || characters.length == 0) return result;
+        if (input == null || characters == null || characters.length == 0) return result;
         //region 利用characters构建正则表达式
         StringBuilder regexB = new StringBuilder();
         regexB.append("[");
