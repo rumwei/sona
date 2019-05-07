@@ -48,7 +48,69 @@ public class StringUtilGW {
     }
 
 
+    /*
+    * @Param: String input  --要处理的字符串
+    *         DeleteType    --移除字符串的方式：移除结尾 & 移除开头
+    *         Character...  --要移除的字符串，字符串由这些单个字符任意组合构成
+    * @Return: 移除后的结果
+    * @Info: 移除由characters里包含的字符任意组合成的字符串
+    * @eg: 假设传入a,0,+ 则移除的字符串为a0,a,aa,00,++,aa00+0a等字符，假设处理"0a++00bi00+iu",且DeleteType为开头字符，则返回bi00+iu
+    * */
+    public static String trimStartOrEnd(String input, DeleteType deleteType, Character... characters) throws Exception{
+        String result = "";
+        if (characters == null || characters.length == 0) return result;
+        //region 利用characters构建正则表达式
+        StringBuilder regexB = new StringBuilder();
+        regexB.append("[");
+        for (int i=0; i<characters.length; i++){
+            if (i < characters.length-1){
+                regexB.append(characters[i]).append("|");
+            }else {
+                regexB.append(characters[i]);
+            }
+        }
+        regexB.append("]*");
+        String regex = regexB.toString();
+        //endregion
 
+        if (input.matches(regex)) return result;
+        if (deleteType == DeleteType.DeleteHeadString){
+            //删除前字符
+            int begin = 0;
+            int end = input.length();
+            while (begin < end){
+                int mid = (begin+end)/2;
+                if (input.substring(0,mid).matches(regex)){
+                    begin = mid;
+                }else{
+                    end = mid;
+                }
+                if (end - begin == 1){
+                    break;
+                }
+            }
+            result = input.substring(begin,input.length());
+        }else if (deleteType == DeleteType.DeleteTailString){
+            //删除后置字符
+            int begin = 0;
+            int end = input.length();
+            while (begin < end){
+                int mid = (begin+end)/2;
+                if (input.substring(mid,end).matches(regex)){
+                    end = mid;
+                }else{
+                    begin = mid;
+                }
+                if (end - begin == 1){
+                    break;
+                }
+            }
+            result = input.substring(0,end);
+        }else {
+            throw new BizException("DeleteType is not support:"+deleteType.toString());
+        }
+        return result;
+    }
 
 
 
