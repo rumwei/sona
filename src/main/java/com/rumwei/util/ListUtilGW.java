@@ -151,6 +151,10 @@ public class ListUtilGW {
         return (input == null || input.size() == 0);
     }
 
+    public static boolean isNotNullOrEmpty(List input){
+        return !isNullOrEmpty(input);
+    }
+
     /*
     * convert list to array
     * */
