@@ -14,6 +14,31 @@ import java.util.*;
 @Slf4j
 public class StringUtilGW {
 
+
+    public static String[] split(String input, String regex){
+        if (input == null || regex == null) return null;
+        List<String> specialRegex = Arrays.asList("|","*","+",".");
+        if (specialRegex.contains(regex)){
+            if ("|".equalsIgnoreCase(regex)){
+                return input.split("\\|");
+            }else if ("*".equalsIgnoreCase(regex)){
+                return input.split("\\*");
+            }else if ("+".equalsIgnoreCase(regex)){
+                return input.split("\\+");
+            }else if (".".equalsIgnoreCase(regex)){
+                return input.split("\\.");
+            }else {
+                return null;
+            }
+        }else if ("\\".equalsIgnoreCase(regex)){
+            return input.split("\\\\");
+        }else {
+            return input.split(regex);
+        }
+    }
+
+
+
     /*
     * @Param: String input
     * @Return: Integer

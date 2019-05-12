@@ -36,6 +36,27 @@ public class UnitTest {
         }
 
 
+        //split method
+        String sample1 = "ni|hao|ma&";
+        String sample2 = "ni*hao*ma&";
+        String sample3 = "ni+hao+ma&";
+        String sample4 = "ni.hao.ma&";
+        String sample5 = "ni\\hao\\ma&";
+        String sample6 = null;
+        try{
+            Assert.assertArrayEquals(StringUtilGW.split(sample1,"|"),new String[]{"ni","hao","ma&"});
+            Assert.assertArrayEquals(StringUtilGW.split(sample2,"*"),new String[]{"ni","hao","ma&"});
+            Assert.assertArrayEquals(StringUtilGW.split(sample3,"+"),new String[]{"ni","hao","ma&"});
+            Assert.assertArrayEquals(StringUtilGW.split(sample4,"."),new String[]{"ni","hao","ma&"});
+            Assert.assertArrayEquals(StringUtilGW.split(sample5,"\\"),new String[]{"ni","hao","ma&"});
+            Assert.assertNull(StringUtilGW.split(sample6,"ni"));
+            Assert.assertNull(StringUtilGW.split(sample1,null));
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+
 
     }
 
