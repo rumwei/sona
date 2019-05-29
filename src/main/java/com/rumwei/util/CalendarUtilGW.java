@@ -1,5 +1,6 @@
 package com.rumwei.util;
 
+import com.google.common.base.Preconditions;
 import com.rumwei.common.DateCommonGW;
 import com.rumwei.enums.DateType;
 import com.rumwei.enums.LeftType;
@@ -37,6 +38,36 @@ public class CalendarUtilGW {
             }
         }
         return (later.getTimeInMillis()-early.getTimeInMillis())/DateCommonGW.MillionSecondPerDay;
+    }
+
+
+    /*
+     * @Description 计算两个日期之间的天数，不考虑时分秒因素
+     * */
+    public static long getDateDaysBetweenDate(Calendar early, Calendar later){
+        Preconditions.checkNotNull(early);
+        Preconditions.checkNotNull(later);
+        long result = 0;
+        int earlyDate = early.get(Calendar.DAY_OF_YEAR);
+        int laterDate = later.get(Calendar.DAY_OF_YEAR);
+        int earlyYear = early.get(Calendar.YEAR);
+        int laterYear = later.get(Calendar.YEAR);
+        if (earlyYear < laterYear){
+            int sum = 0;
+            for (int i=earlyYear; i<laterYear; i++){
+                if (i%4==0 && i%100!=0 || i%400==0){ //闰年
+                    sum += 366;
+                }else {
+                    sum += 365;
+                }
+            }
+            result = sum+(laterDate-earlyDate);
+        }else if (earlyYear == laterYear){
+            result = laterDate-earlyDate;
+        }else {
+            result = -getDateDaysBetweenDate(later,early);
+        }
+        return result;
     }
 
     /*

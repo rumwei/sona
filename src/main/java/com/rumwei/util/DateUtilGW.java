@@ -35,6 +35,14 @@ public class DateUtilGW {
         return CalendarUtilGW.getDaysBetweenCalendar(dateToCalendar(early),dateToCalendar(later),leftType);
     }
 
+
+    /*
+     * @Description 计算两个日期之间的天数，不考虑时分秒因素
+     * */
+    public static long getDateDaysBetweenDate(Date early, Date later){
+        return CalendarUtilGW.getDateDaysBetweenDate(dateToCalendar(early),dateToCalendar(later));
+    }
+
     /*
      * @Description 计算later-early的小时数
      * @Input early later 表示需要计算的两个日期
