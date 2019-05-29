@@ -180,6 +180,47 @@ public class StringUtilGW {
         result.setTime(date);
         return result;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
+    * @Param: String
+    * @Return: String
+    * @Info: String的第一个字符大写
+    * */
+    public static String upperFirstChar(String input){
+        if (input == null) return null;
+        if (input.length() == 0) return "";
+        char[] cs = input.toCharArray();
+        if (cs[0] >= 97 && cs[0] <= 122){
+            cs[0] -= 32;
+        }
+        return String.valueOf(cs);
+    }
+
+    /*
+    * @Param: String
+    * @Return: String
+    * @Info: String的第一个字符小写
+    * */
+    public static String lowerFirstChar(String input){
+        if (input == null) return null;
+        if (input.length() == 0) return "";
+        char[] cs = input.toCharArray();
+        if (cs[0] >= 65 && cs[0] <= 90){
+            cs[0] += 32;
+        }
+        return String.valueOf(cs);
+    }
 
 
 
