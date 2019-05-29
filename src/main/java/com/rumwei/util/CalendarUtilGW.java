@@ -54,6 +54,26 @@ public class CalendarUtilGW {
         return (later.getTimeInMillis()-early.getTimeInMillis())/DateCommonGW.MillionSecondPerHour;
     }
 
+    /*
+     * @Description 比较两个日期的年月日，即不考虑时分秒
+     * 40>31保证月份的差距不会因为日期差距被弥补，12*40=480<600保证年份差距不会被月份弥补
+     * */
+    public static int compareDateOnly(Calendar early, Calendar late){
+        int earlyNum = early.get(Calendar.YEAR)*600+early.get(Calendar.MONTH)*40+early.get(Calendar.DATE);
+        int lateNum = late.get(Calendar.YEAR)*600+late.get(Calendar.MONTH)*40+late.get(Calendar.DATE);
+        if (earlyNum < lateNum) return 1;
+        else if (earlyNum == lateNum) return 0;
+        else return -1;
+    }
+
+
+    /*
+     * @Description 比较两个日期的年月日是否相同
+     * */
+    public static boolean isEqualInDateLevel(Calendar cal1, Calendar cal2){
+        return compareDateOnly(cal1,cal2) == 0;
+    }
+
 
 
 

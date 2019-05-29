@@ -16,24 +16,7 @@ public class FuncTest {
 
     public static void main(String[] args){
 
-        String sample1 = "ni|hao|ma&";
-        String[] sshu = StringUtilGW.split(sample1,"\\");
-        String[] standart = sample1.split("\\|");
 
-        String ss = "\\\\"+"*";
-        System.out.println(ss);
-
-        List<People> peoples = ListUtilGW.newArrayList();
-        peoples.add(new People("hi",23));
-        peoples.add(new People("ni",45));
-        String coreNum = ListUtilGW.ListEleToString(peoples, "$", new ConvertGW<People, String>() {
-            @Nullable
-            @Override
-            public String apply(@Nullable People var1) {
-                return var1.getName();
-            }
-        });
-        System.out.println(coreNum);
     }
 
 

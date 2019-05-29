@@ -46,5 +46,26 @@ public class DateUtilGW {
     }
 
 
+    /*
+    * @Description 比较两个日期的年月日，即不考虑时分秒
+    * 40>31保证月份的差距不会因为日期差距被弥补，12*40=480<600保证年份差距不会被月份弥补
+    * */
+    public static int compareDateOnly(Date early, Date late){
+        int earlyNum = getYear(early)*600+getMonth(early)*40+getDay(early);
+        int lateNum = getYear(late)*600+getMonth(late)*40+getDay(late);
+        if (earlyNum < lateNum) return 1;
+        else if (earlyNum == lateNum) return 0;
+        else return -1;
+    }
+
+
+    /*
+    * @Description 比较两个日期的年月日是否相同
+    * */
+    public static boolean isEqualInDateLevel(Date date1, Date date2){
+        return compareDateOnly(date1,date2) == 0;
+    }
+
+
 
 }

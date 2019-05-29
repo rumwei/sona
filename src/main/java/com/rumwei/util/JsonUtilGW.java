@@ -7,6 +7,8 @@ import com.google.common.base.Preconditions;
 import com.rumwei.exception.runtime.BizException;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Map;
+
 /*
 * @Author: guwei
 * @Description: 处理Json相关的逻辑
@@ -40,6 +42,17 @@ public class JsonUtilGW {
         }
 
     }
+
+
+
+    /*
+    * @Description 将Json字符串转换成Map对象
+    * */
+    public static Map<String,Object> JsonStringToMap(String jsonStr) throws Exception{
+        Preconditions.checkNotNull(jsonStr);
+        return objectMapper.readValue(jsonStr,Map.class);
+    }
+
 
 
 
