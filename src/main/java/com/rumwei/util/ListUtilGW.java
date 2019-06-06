@@ -173,6 +173,22 @@ public class ListUtilGW {
     public static Set listToSet(List list){
         return new HashSet(list);
     }
+    
+     /*
+    * ele is in collection without considering character case or not
+    * */
+    public static boolean isContainStrIgnoreCase(List<String> collection, String ele){
+        if (isNotNullOrEmpty(collection) && ele != null){
+            for (String item : collection){
+                if (ele.equalsIgnoreCase(item)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    
 
     /*
     * List元素去重
