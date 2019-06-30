@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Preconditions;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.StringWriter;
 
 /*
 * @Author: guwei
@@ -33,6 +32,7 @@ public class ObjectUtilGW {
         Preconditions.checkNotNull(o);
         return objectMapper.writeValueAsString(o);
     }
+
 
 
 
