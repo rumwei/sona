@@ -33,6 +33,10 @@ public class ObjectUtilGW {
         return objectMapper.writeValueAsString(o);
     }
 
+    public static String toString(Object o, String nullDefault){
+        return (o != null) ? o.toString() : nullDefault;
+    }
+
 
 
 
