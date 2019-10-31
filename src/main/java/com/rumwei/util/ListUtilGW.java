@@ -8,6 +8,8 @@ import com.rumwei.common.DataTypeCommonGW;
 import com.rumwei.enums.OrderType;
 import com.rumwei.exception.runtime.BizException;
 import javax.annotation.Nonnull;
+
+import com.sun.tools.javac.util.Assert;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Array;
@@ -38,6 +40,21 @@ public class ListUtilGW {
             }
         }
         return result.toString();
+    }
+
+    /*
+    * @Param List<String> input, String separator
+    * @Return String
+    * @Description 将一个List<String>转化成一个String，若List为空或者分隔符为空，则返回null
+    * */
+    public static String strListToString(List<String> input, String separator){
+        Assert.checkNull(input);
+        Assert.checkNull(separator);
+        if (0 == input.size()){
+            return "";
+        }else {
+            return String.join(separator,input);
+        }
     }
 
 
