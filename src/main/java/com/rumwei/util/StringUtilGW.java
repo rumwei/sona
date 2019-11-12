@@ -222,6 +222,14 @@ public class StringUtilGW {
         return String.valueOf(cs);
     }
 
+    /*
+    * @Return: String
+    * @Info: 产生一个32字符的随机字符串，不含'-'
+    * */
+    public static String getRandomByUUID(){
+        return UUID.randomUUID().toString().replace("-","");
+    }
+
 
 
 
