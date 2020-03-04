@@ -16,7 +16,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <google-guava-version>27.1-jre</google-guava-version>
-        <jackson-version>2.9.10</jackson-version>
+        <jackson-version>2.9.10.3</jackson-version>
         <junit-version>4.7</junit-version>
 
     </properties>
